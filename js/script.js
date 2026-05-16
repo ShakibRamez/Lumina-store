@@ -1,68 +1,49 @@
-// Lumina Store - JavaScript
+// Simple Cart
 let cartCount = 0;
-const cartCountEl = document.getElementById('cart-count');
+const cartCountEl = document.getElementById('cartCount');
 
+// Hamburger Menu
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+});
+
+// Sample Products
 const products = [
-    {
-        id: 1,
-        name: "Midnight Velvet Blazer",
-        price: 1290,
-        image: "https://picsum.photos/id/1015/600/400"
-    },
-    {
-        id: 2,
-        name: "Golden Hour Silk Dress",
-        price: 980,
-        image: "https://picsum.photos/id/1027/600/400"
-    },
-    {
-        id: 3,
-        name: "Obsidian Leather Jacket",
-        price: 1450,
-        image: "https://picsum.photos/id/106/600/400"
-    },
-    {
-        id: 4,
-        name: "Ivory Cashmere Coat",
-        price: 2150,
-        image: "https://picsum.photos/id/201/600/400"
-    }
+  { id: 1, name: "Midnight Watch", price: 1299, img: "https://picsum.photos/id/201/400/400" },
+  { id: 2, name: "Golden Silk Dress", price: 899, img: "https://picsum.photos/id/1011/400/400" },
+  { id: 3, name: "Leather Tote Bag", price: 650, img: "https://picsum.photos/id/180/400/400" },
+  { id: 4, name: "Aviator Sunglasses", price: 320, img: "https://picsum.photos/id/106/400/400" }
 ];
 
+// Render Products
 function renderProducts() {
-    const grid = document.getElementById('products-grid');
-    grid.innerHTML = '';
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';
 
-    products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p class="price">$${product.price}</p>
-                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
-            </div>
-        `;
-        grid.appendChild(card);
+  products.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img src="${product.img}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>$${product.price}</p>
+      <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Add to cart buttons
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      cartCount++;
+      cartCountEl.textContent = cartCount;
+      btn.textContent = 'Added ✓';
+      setTimeout(() => btn.textContent = 'Add to Cart', 1500);
     });
+  });
 }
 
-function addToCart(id) {
-    cartCount++;
-    cartCountEl.textContent = cartCount;
-    
-    // Simple animation
-    const btns = document.querySelectorAll('.btn');
-    btns.forEach(btn => {
-        if (btn.getAttribute('onclick').includes(id)) {
-            btn.style.transform = 'scale(0.95)';
-            setTimeout(() => btn.style.transform = 'scale(1)', 200);
-        }
-    });
-    
-    alert(`✅ Added to cart: ${products.find(p => p.id === id).name}`);
-}
-
-// Initialize
-window.onload = renderProducts;
+renderProducts();
