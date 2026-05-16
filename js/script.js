@@ -1,45 +1,32 @@
 let cartCount = 0;
 const cartCountEl = document.getElementById('cartCount');
 
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-
-hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navMenu').classList.toggle('active');
 });
 
 const products = [
-  { id: 1, name: "Midnight Watch", price: 1299, img: "https://picsum.photos/id/201/400/400" },
-  { id: 2, name: "Golden Silk Dress", price: 899, img: "https://picsum.photos/id/1011/400/400" },
-  { id: 3, name: "Leather Tote Bag", price: 650, img: "https://picsum.photos/id/180/400/400" },
-  { id: 4, name: "Aviator Sunglasses", price: 320, img: "https://picsum.photos/id/106/400/400" }
+  { name: "Signature Evening Gown", price: 1890, img: "https://picsum.photos/id/1015/600/800" },
+  { name: "Luxury Leather Jacket", price: 1250, img: "https://picsum.photos/id/201/600/800" },
+  { name: "Gold Chain Necklace", price: 420, img: "https://picsum.photos/id/106/600/800" },
+  { name: "Premium Silk Shirt", price: 680, img: "https://picsum.photos/id/133/600/800" }
 ];
 
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
+const grid = document.getElementById('productsGrid');
 
-  products.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${product.img}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>$${product.price}</p>
-      <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
-    `;
-    grid.appendChild(card);
+products.forEach(product => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <img src="${product.img}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>$${product.price}</p>
+    <button class="add-to-cart">Add to Cart</button>
+  `;
+  card.querySelector('.add-to-cart').addEventListener('click', () => {
+    cartCount++;
+    cartCountEl.textContent = cartCount;
+    alert(`${product.name} added to cart!`);
   });
-
-  document.querySelectorAll('.add-to-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      cartCount++;
-      cartCountEl.textContent = cartCount;
-      const originalText = btn.textContent;
-      btn.textContent = 'Added ✓';
-      setTimeout(() => btn.textContent = originalText, 1500);
-    });
-  });
-}
-
-renderProducts();
+  grid.appendChild(card);
+});

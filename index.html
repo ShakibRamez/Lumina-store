@@ -12,19 +12,17 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">LUMINA</div>
-      
       <div class="nav-menu" id="navMenu">
-        <a href="#" class="nav-link">Home</a>
-        <a href="#shop" class="nav-link">Shop</a>
-        <a href="#collections" class="nav-link">Collections</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Shop</a>
+        <a href="#" class="nav-link">New Arrivals</a>
+        <a href="#" class="nav-link">Collections</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
       </div>
-
       <div class="nav-icons">
-        <i class="fas fa-search icon"></i>
-        <div class="cart-icon">
-          <i class="fas fa-shopping-bag icon"></i>
+        <i class="fas fa-search"></i>
+        <div class="cart-icon" id="cartIcon">
+          <i class="fas fa-shopping-bag"></i>
           <span class="cart-count" id="cartCount">0</span>
         </div>
         <div class="hamburger" id="hamburger">
@@ -37,17 +35,54 @@
   <!-- Hero -->
   <header class="hero">
     <div class="hero-content">
-      <h1>Timeless Elegance</h1>
-      <p>Discover luxury fashion that defines your style</p>
-      <a href="#shop" class="btn-primary">Shop Now</a>
+      <h1>Timeless Luxury</h1>
+      <p>Elevate your style with premium fashion</p>
+      <a href="#shop" class="btn-primary">Shop Collection</a>
     </div>
   </header>
 
   <!-- Products -->
   <section id="shop" class="products">
-    <h2>Featured Products</h2>
+    <div class="section-header">
+      <h2>New Arrivals</h2>
+      <a href="#" class="view-all">View All →</a>
+    </div>
     <div class="products-grid" id="productsGrid"></div>
   </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>LUMINA</h3>
+        <p>Premium fashion for those who appreciate the finer things.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#">New Arrivals</a>
+        <a href="#">Best Sellers</a>
+        <a href="#">Collections</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Stay updated with our latest collections</p>
+        <div class="newsletter">
+          <input type="email" placeholder="Your email">
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Lumina Store. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="js/script.js"></script>
 </body>
