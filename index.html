@@ -1,56 +1,45 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Store | فروشگاه لوکس مد</title>
+    <title>Lumina Store - Luxury Fashion</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Header -->
     <header>
-        <nav class="navbar">
+        <nav>
             <div class="logo">LUMINA</div>
-            <ul class="nav-links">
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#shop">فروشگاه</a></li>
-                <li><a href="#about">درباره ما</a></li>
-                <li><a href="#contact">تماس</a></li>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
-            <div class="icons">
-                <i class="fas fa-search"></i>
-                <i class="fas fa-shopping-cart" id="cart-icon"></i>
-                <i class="fas fa-user"></i>
-            </div>
+            <div class="cart">🛍️ <span id="cart-count">0</span></div>
         </nav>
     </header>
 
     <!-- Hero -->
-    <section id="home" class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1>لوکس ترین انتخاب شما</h1>
-            <p>جدیدترین کالکشن بهار ۱۴۰۵</p>
-            <a href="#shop" class="btn">مشاهده محصولات</a>
+            <h1>Timeless Elegance</h1>
+            <p>Discover luxury fashion that defines your style</p>
+            <a href="#products" class="btn">Shop Now</a>
         </div>
     </section>
 
     <!-- Products -->
-    <section id="shop" class="products">
-        <h2>محصولات ویژه</h2>
-        <div class="product-grid">
-            <!-- JS will fill this -->
-        </div>
+    <section id="products" class="products">
+        <h2>Featured Collections</h2>
+        <div class="products-grid" id="products-grid"></div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="about">
-        <h2>درباره لومینا</h2>
-        <p>لومینا استور، نمادی از elegance و کیفیت برتر در دنیای مد لوکس ایران.</p>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; ۱۴۰۵ Lumina Store - همه حقوق محفوظ است</p>
+        <p>&copy; 2026 Lumina Store. All rights reserved.</p>
     </footer>
 
     <script src="js/script.js"></script>
