@@ -29,4 +29,4 @@ products.forEach(product => {
     alert(`${product.name} added to cart!`);
   });
   grid.appendChild(card);
-});
+});  
