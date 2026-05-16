@@ -1,53 +1,68 @@
-// Lumina Store JavaScript
+// Lumina Store - JavaScript
+let cartCount = 0;
+const cartCountEl = document.getElementById('cart-count');
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Lumina Store آماده است!');
-
-    // Simple cart functionality
-    let cartCount = 0;
-    const cartIcon = document.querySelector('.fa-shopping-cart');
-
-    // Sample products
-    const products = [
-        { id: 1, name: 'کت و شلوار لوکس', price: '۱۲,۵۰۰,۰۰۰', img: 'https://picsum.photos/id/1060/400/320' },
-        { id: 2, name: 'پیراهن ابریشمی', price: '۴,۸۰۰,۰۰۰', img: 'https://picsum.photos/id/201/400/320' },
-        { id: 3, name: 'ساعت رولکس', price: '۸۵,۰۰۰,۰۰۰', img: 'https://picsum.photos/id/1074/400/320' },
-        { id: 4, name: 'کیف دستی چرم', price: '۶,۲۰۰,۰۰۰', img: 'https://picsum.photos/id/180/400/320' }
-    ];
-
-    const productGrid = document.querySelector('.product-grid');
-
-    if (productGrid) {
-        products.forEach(product => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <img src="${product.img}" alt="${product.name}">
-                <div class="product-info">
-                    <h3>${product.name}</h3>
-                    <p class="price">${product.price} تومان</p>
-                    <button class="btn add-to-cart" data-id="${product.id}">افزودن به سبد</button>
-                </div>
-            `;
-            productGrid.appendChild(card);
-        });
+const products = [
+    {
+        id: 1,
+        name: "Midnight Velvet Blazer",
+        price: 1290,
+        image: "https://picsum.photos/id/1015/600/400"
+    },
+    {
+        id: 2,
+        name: "Golden Hour Silk Dress",
+        price: 980,
+        image: "https://picsum.photos/id/1027/600/400"
+    },
+    {
+        id: 3,
+        name: "Obsidian Leather Jacket",
+        price: 1450,
+        image: "https://picsum.photos/id/106/600/400"
+    },
+    {
+        id: 4,
+        name: "Ivory Cashmere Coat",
+        price: 2150,
+        image: "https://picsum.photos/id/201/600/400"
     }
+];
 
-    // Add to cart
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add-to-cart')) {
-            cartCount++;
-            if (cartIcon) cartIcon.style.color = '#d4af37';
-            alert('به سبد خرید اضافه شد!');
+function renderProducts() {
+    const grid = document.getElementById('products-grid');
+    grid.innerHTML = '';
+
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <p class="price">$${product.price}</p>
+                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function addToCart(id) {
+    cartCount++;
+    cartCountEl.textContent = cartCount;
+    
+    // Simple animation
+    const btns = document.querySelectorAll('.btn');
+    btns.forEach(btn => {
+        if (btn.getAttribute('onclick').includes(id)) {
+            btn.style.transform = 'scale(0.95)';
+            setTimeout(() => btn.style.transform = 'scale(1)', 200);
         }
     });
+    
+    alert(`✅ Added to cart: ${products.find(p => p.id === id).name}`);
+}
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-});
+// Initialize
+window.onload = renderProducts;
